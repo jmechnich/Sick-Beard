@@ -224,14 +224,14 @@ def getURLFileLike(url, validate=False, cookies = cookielib.CookieJar(), passwor
         return opener.open(url)
 
     except urllib2.HTTPError, e:
-        logger.log(u"HTTP error " + str(e.code) + " while loading URL " + url, logger.WARNING)
+        logger.log(u"HTTP error %d while loading URL %s" % (e.code, url), logger.WARNING)
         if throw_exc:
             raise 
         else:
             return None
 
     except urllib2.URLError, e:
-        logger.log(u"URL error " + str(e.reason) + " while loading URL " + url, logger.WARNING)
+        logger.log(u"URL error %s while loading URL %s" % (e.reason,url), logger.WARNING)
         if throw_exc:
             raise 
         else:
