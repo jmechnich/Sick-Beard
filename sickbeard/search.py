@@ -195,8 +195,8 @@ def searchForNeededEpisodes():
 
             foundResults[curEp] = bestResult
 
-    if not didSearch:
-        logger.log(u"No NZB/Torrent providers found or enabled in the sickbeard config. Please check your settings.", logger.ERROR)
+    #if not didSearch:
+    #    logger.log(u"No NZB/Torrent providers found or enabled in the sickbeard config. Please check your settings.", logger.ERROR)
 
     return foundResults.values()
 
@@ -340,8 +340,8 @@ def findEpisode(episode, manualSearch=False):
         if done_searching:
             break
 
-    if not didSearch:
-        logger.log(u"No NZB/Torrent providers found or enabled in the sickbeard config. Please check your settings.", logger.ERROR)
+    #if not didSearch:
+    #    logger.log(u"No NZB/Torrent providers found or enabled in the sickbeard config. Please check your settings.", logger.ERROR)
 
     bestResult = pickBestResult(foundResults, episode.show)
 
@@ -385,8 +385,8 @@ def findSeason(show, season):
 
         didSearch = True
 
-    if not didSearch:
-        logger.log(u"No NZB/Torrent providers found or enabled in the sickbeard config. Please check your settings.", logger.ERROR)
+    #if not didSearch:
+    #    logger.log(u"No NZB/Torrent providers found or enabled in the sickbeard config. Please check your settings.", logger.ERROR)
 
     finalResults = []
 
