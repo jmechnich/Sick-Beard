@@ -24,7 +24,7 @@ if sys.version_info < (2, 5):
 
 try:
     import Cheetah
-    if Cheetah.Version[0] != '2':
+    if not Cheetah.Version[0] in ['2', '3']:
         raise ValueError
 except ValueError:
     sys.exit("Sorry, requires Python module Cheetah 2.1.0 or newer.")

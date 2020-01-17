@@ -680,18 +680,18 @@ class TVShow(object):
         myEp = t[self.tvdbid]
 
         try:
-            self.name = myEp["seriesname"].strip()
+            self.name = myEp["seriesName"].strip()
         except AttributeError:
             raise tvdb_exceptions.tvdb_attributenotfound("Found %s, but attribute 'seriesname' was empty." % (self.tvdbid))
 
-        self.genre = myEp['genre']
+        self.genre = u'|%s|' % '|'.join(myEp['genre'])
         self.network = myEp['network']
 
-        if myEp["airs_dayofweek"] is not None and myEp["airs_time"] is not None:
-            self.airs = myEp["airs_dayofweek"] + " " + myEp["airs_time"]
+        if myEp["airsDayOfWeek"] is not None and myEp["airsTime"] is not None:
+            self.airs = myEp["airsDayOfWeek"] + " " + myEp["airsTime"]
 
-        if myEp["firstaired"] is not None and myEp["firstaired"]:
-            self.startyear = int(myEp["firstaired"].split('-')[0])
+        if myEp["firstAired"] is not None and myEp["firstAired"]:
+            self.startyear = int(myEp["firstAired"].split('-')[0])
 
         if self.airs is None:
             self.airs = ""

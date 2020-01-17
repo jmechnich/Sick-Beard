@@ -22,7 +22,7 @@ import traceback
 
 import sickbeard
 
-from lib.tvdb_api import tvdb_exceptions, tvdb_api
+from lib.tvdb_api import tvdb_api
 
 from sickbeard.common import SKIPPED, WANTED
 
@@ -234,7 +234,7 @@ class QueueItemAdd(ShowQueueItem):
                     ui.notifications.error("Unable to add show", "Show " + str(s['seriesname']) + " is on TVDB but contains no season/episode data.")
                     self._finishEarly()
                     return
-            except tvdb_exceptions.tvdb_exception, e:
+            except tvdb_api.tvdb_exception, e:
                 logger.log(u"Error contacting TVDB: " + ex(e), logger.ERROR)
                 ui.notifications.error("Unable to add show", "Unable to look up the show in " + self.showDir + " on TVDB, not using the NFO. Delete .nfo and add manually in the correct language.")
                 self._finishEarly()
@@ -261,7 +261,7 @@ class QueueItemAdd(ShowQueueItem):
             if self.show.genre and "documentary" in self.show.genre.lower():
                 self.show.air_by_date = 0
 
-        except tvdb_exceptions.tvdb_exception, e:
+        except tvdb_api.tvdb_exception, e:
             logger.log(u"Unable to add show due to an error with TVDB: " + ex(e), logger.ERROR)
             if self.show:
                 ui.notifications.error("Unable to add " + str(self.show.name) + " due to an error with TVDB")
@@ -415,11 +415,11 @@ class QueueItemUpdate(ShowQueueItem):
         try:
             self.show.loadFromTVDB(cache=not self.force)
 
-        except tvdb_exceptions.tvdb_error, e:
+        except tvdb_api.tvdb_error, e:
             logger.log(u"Unable to contact TVDB, aborting: " + ex(e), logger.WARNING)
             return
 
-        except tvdb_exceptions.tvdb_attributenotfound, e:
+        except tvdb_api.tvdb_attributenotfound, e:
             logger.log(u"Data retrieved from TVDB was incomplete, aborting: " + ex(e), logger.ERROR)
             return
 
@@ -432,7 +432,7 @@ class QueueItemUpdate(ShowQueueItem):
         try:
             TVDBEpList = self.show.loadEpisodesFromTVDB(cache=not self.force)
 
-        except tvdb_exceptions.tvdb_exception, e:
+        except tvdb_api.tvdb_exception, e:
             logger.log(u"Unable to get info from TVDB, the show info will not be refreshed: " + ex(e), logger.ERROR)
             TVDBEpList = None
 

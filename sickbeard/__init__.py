@@ -449,8 +449,7 @@ def initialize(consoleLogging=True):
 
         # Set our common tvdb_api options here
         TVDB_API_PARMS = {'apikey': TVDB_API_KEY,
-                          'language': 'en',
-                          'useZip': True}
+                          'language': 'en'}
 
         if CACHE_DIR:
             TVDB_API_PARMS['cache'] = os.path.join(CACHE_DIR, 'tvdb')
