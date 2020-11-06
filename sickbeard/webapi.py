@@ -2102,7 +2102,7 @@ class CMD_ShowRefresh(ApiCall):
 
         try:
             sickbeard.showQueueScheduler.action.refreshShow(showObj)  # @UndefinedVariable
-            return _responds(RESULT_SUCCESS, msg=u"" + showObj.name + " has queued to be refreshed")
+            return _responds(RESULT_SUCCESS, msg=u"" + showObj.name + " was queued to be refreshed")
         except exceptions.CantRefreshException, e:
             logger.log(u"API:: Unable to refresh " + showObj.name + ". " + str(ex(e)), logger.ERROR)
             return _responds(RESULT_FAILURE, msg=u"Unable to refresh " + showObj.name)
@@ -2388,7 +2388,7 @@ class CMD_ShowUpdate(ApiCall):
 
         try:
             sickbeard.showQueueScheduler.action.updateShow(showObj, True)  # @UndefinedVariable
-            return _responds(RESULT_SUCCESS, msg=u"" + showObj.name + " has queued to be updated")
+            return _responds(RESULT_SUCCESS, msg=u"" + showObj.name + " was queued to be updated")
         except exceptions.CantUpdateException, e:
             logger.log(u"API:: Unable to update " + showObj.name + ". " + str(ex(e)), logger.ERROR)
             return _responds(RESULT_FAILURE, msg=u"Unable to update " + showObj.name)
