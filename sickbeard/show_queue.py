@@ -301,11 +301,11 @@ class QueueItemAdd(ShowQueueItem):
             logger.log(u"Error with TVDB, not creating episode list: " + ex(e), logger.ERROR)
             logger.log(traceback.format_exc(), logger.DEBUG)
 
-        try:
-            self.show.setTVRID()
+        #try:
+        #    self.show.setTVRID()
 
-        except Exception, e:
-            logger.log(u"Error with TVRage, not setting tvrid" + ex(e), logger.ERROR)
+        #except Exception, e:
+        #    logger.log(u"Error with TVRage, not setting tvrid" + ex(e), logger.ERROR)
 
         try:
             self.show.loadEpisodesFromDir()
@@ -459,11 +459,11 @@ class QueueItemUpdate(ShowQueueItem):
                         pass
 
         # now that we've updated the DB from TVDB see if there's anything we can add from TVRage
-        with self.show.lock:
-            logger.log(u"Attempting to supplement show info with info from TVRage", logger.DEBUG)
-            self.show.loadLatestFromTVRage()
-            if self.show.tvrid == 0:
-                self.show.setTVRID()
+        #with self.show.lock:
+        #    logger.log(u"Attempting to supplement show info with info from TVRage", logger.DEBUG)
+        #    self.show.loadLatestFromTVRage()
+        #    if self.show.tvrid == 0:
+        #        self.show.setTVRID()
 
         sickbeard.showQueueScheduler.action.refreshShow(self.show, True)  # @UndefinedVariable
 
