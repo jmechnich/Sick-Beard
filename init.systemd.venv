@@ -1,0 +1,13 @@
+[Unit]
+Description=SickBeard systemd service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/opt/sickbeard/venv/bin/python /opt/sickbeard/SickBeard.py
+User=sickbeard
+Group=sickbeard
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target

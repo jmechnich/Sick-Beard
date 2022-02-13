@@ -1,0 +1,6 @@
+# Pre-requirements
+
+apt-get install python2.7 python3-virtualenv
+virtualenv -p /usr/bin/python2.7 venv
+. venv/bin/activate
+pip install -r requirements.venv.txt
