@@ -839,6 +839,8 @@ class GenericMetadata():
         """
 
         empty_return = (None, None)
+        # disable local metadata lookup
+        return empty_return;
 
         metadata_path = ek.ek(os.path.join, folder, self._show_metadata_filename)
 
