@@ -1,6 +1,28 @@
 # Pre-requirements
 
+## Install python2 from older Debian repo (deprecated)
+
 apt-get install python2.7 python3-virtualenv
 virtualenv -p /usr/bin/python2.7 venv
+
+
+## Build python2 from scratch
+
+sudo apt-get install libreadline-dev libncurses-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+
+wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz
+tar zxvf Python-2.7.18.tgz
+cd Python-2.7.18
+./configure --enable-optimizations
+sudo make altinstall
+sudo ln -s /usr/local/bin/python2.7 /usr/local/bin/python2
+
+wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+sudo python2 get-pip.py
+sudo ln -s /usr/local/bin/pip2.7 /usr/local/bin/pip2
+
+
+# Activate venv and install required packages
+
 . venv/bin/activate
 pip install -r requirements.venv.txt
